@@ -45,12 +45,12 @@ const mongo = () => {
 
     /**
      * Creates a new document in the specified collection
-     * @param {string} TeamStatCheck - name of the collection
+     * @param {string} Brewerycheck - name of the collection
      * @param {Object} data - data to be inserted into the collection
      */
-    async function create(TeamStatCheck, data) {
+    async function create(Brewerycheck, data) {
         try {
-            const StatCheck = db.collection(TeamStatCheck);
+            const StatCheck = db.collection(Brewerycheck);
             await StatCheck.insertOne(data);
         } catch (err) {
             console.error(err);
@@ -59,18 +59,18 @@ const mongo = () => {
 
     /**
      * Finds documents in the specified collection
-     * @param {string} TeamStatCheck - name of the collection
-     * @param {string} Stats - identifier for filtering documents
+     * @param {string} Brewerycheck - name of the collection
+     * @param {string} Id - identifier for filtering documents
      * @returns {Promise<Document>} - a document or an array of ducments
      */
-    async function find(TeamStatCheck, Stats) {
+    async function find(Brewerycheck, Id) {
         try {
-            const StatCheck = db.collection(TeamStatCheck);
+            const IdCheck = db.collection(Brewerycheck);
 
-            if (Stats) {
-                return await StatCheck.find({ Stat: Stats }).next();
+            if (Id) {
+                return await IdCheck.find({ Id1: Id }).next();
             } else {
-                return await StatCheck
+                return await IdCheck
                     .find({})
                     .limit(10)
                     .sort({ _id: -1 })
@@ -82,15 +82,15 @@ const mongo = () => {
     }
     /**
      * Updates documents in the specified collection
-     * @param {string} TeamStatCheck - name of the collection
-     * @param {string} Stats - identifier for filtering documents
+     * @param {string} Brewerycheck - name of the collection
+     * @param {string} Id - identifier for filtering documents
      * @param {Object} data - the data to be updated
      */
-    async function update(TeamStatCheck, Stats, data) {
+    async function update(Brewerycheck, Id, data) {
         try {
-            const StatCheck = db.collection(TeamStatCheck);
-            await StatCheck.updateOne(
-                { Stat: Stats },
+            const IdCheck = db.collection(Brewerycheck);
+            await IdCheck.updateOne(
+                { Id1: Id },
                 { $set: data }
             );
         } catch (err) {
