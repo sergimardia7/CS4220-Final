@@ -34,3 +34,25 @@ process.on('SIGINT', async () => {
         console.log('Server closed.');
     });
 });
+// SECOND VERSION -- this takes into account the search.js and history.js files we need to access. 
+// import express from 'express';
+// import mongo from './services/db.js';
+// import search from './routes/search.js';
+// import history from './routes/history.js';
+
+// const PORT = 8888;
+
+// const app = express();
+
+// app.get('/', (req, res) => {
+//     res.send('Welcome to the Brewery Search App');
+// });
+
+// app.use('/search', search);
+
+// app.use('/history', history);
+
+// const server = app.listen(PORT, async () => {
+//     console.log(`Server is listening on port ${PORT}`);
+//     await mongo.connect();
+// });
