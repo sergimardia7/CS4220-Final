@@ -1,8 +1,8 @@
 import express from 'express';
 
 import mongo from './services/db.js';
-import poker from './routes/poker.js';
-import results from './routes/results.js';
+import search from './routes/search.js';
+// import results from './routes/results.js';
 
 const PORT = 8888;
 
@@ -11,11 +11,11 @@ const app = express();
 
 // GET route to handle requests to the root URL (localhost:8888)
 app.get('/', (req, res) => {
-    res.send('Welcome to the Deck of Cards App');
+    res.send('Welcome to the Brew List App');
 });
 
-// mounting the 'poker' router to handle requests starting with '/poker'
-//app.use('/poker', poker); ( need to use our router handle)
+// mounting the 'search' router to handle requests starting with '/search'
+app.use('/poker', search); // ( need to use our router handle)
 
 // mounting the 'results' router to handle requests starting with '/results'
 //app.use('/results', results);
