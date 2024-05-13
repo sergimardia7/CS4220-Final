@@ -1,4 +1,5 @@
 // the file to interact with the deck of cards api
+// don't need to redo this portion
 import axios from 'axios';
 
 const base = 'https://api.openbrewerydb.org/v1/breweries';
@@ -8,10 +9,14 @@ const base = 'https://api.openbrewerydb.org/v1/breweries';
  * @returns {Promise<Array>} - a promise resolving to the search results list
 */
 export const searchByKeyword = async (keyword) => {
-    const brewURL = `${base}/search?query=${keyword}`;
-    const response = await axios.get(brewURL);
+    try {
+        const brewURL = `${base}/search?query=${keyword}`;
+        const response = await axios.get(brewURL);
 
-    return response.data;
+        return response.data;
+    } catch (error) {
+        return error;
+    }
 };
 
 
@@ -21,9 +26,12 @@ export const searchByKeyword = async (keyword) => {
  * @returns {Promise<Array>} - a promise resolving to the details of the brewery
  */
 export const getByIdentifier = async (breweryID) => {
-    const brewURL = `${base}/${breweryID}`;
-    const response = await axios.get(brewURL);
+    try {
+        const brewURL = `${base}/${breweryID}`;
+        const response = await axios.get(brewURL);
 
-    return response.data;
+        return response.data;
+    } catch (error) {
+        return error;
+    }
 };
-
